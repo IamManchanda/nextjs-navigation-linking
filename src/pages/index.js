@@ -1,8 +1,6 @@
 import { Fragment } from "react";
 import NavigationHeader from "../components/navigation-header";
 
-import React from "react";
-
 function PageIndex() {
   return (
     <Fragment>
