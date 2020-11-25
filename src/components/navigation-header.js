@@ -5,15 +5,15 @@ import React from "react";
 function NavigationHeader() {
   const allPosts = [
     {
-      id: "206ea322?c396@4bb3^bf17%8a9013bae293",
+      id: 1,
       name: "First Post",
     },
     {
-      id: "385baf31?66af@4c60^aeb5%d79bc7d083c7",
+      id: 2,
       name: "Second Post",
     },
     {
-      id: "d460001f?d335@4c8d^b40b%9151de8e9b44",
+      id: 3,
       name: "Third Post",
     },
   ];
