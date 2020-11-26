@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import fetcher from "../utils/fetcher";
 
 function PageDashboard({ user: { name, bio, blog, twitter_username } = {} }) {
   return (
@@ -22,8 +23,7 @@ function PageDashboard({ user: { name, bio, blog, twitter_username } = {} }) {
 }
 
 export async function getStaticProps() {
-  const userResponse = await fetch("https://api.github.com/users/IamManchanda");
-  const user = await userResponse.json();
+  const user = await fetcher("https://api.github.com/users/IamManchanda");
 
   return {
     props: {

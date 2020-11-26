@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import NavigationHeader from "../../../components/navigation-header";
+import fetcher from "../../../utils/fetcher";
 
 function PageSinglePost({ post: { title, body } = {} }) {
   return (
@@ -13,10 +14,9 @@ function PageSinglePost({ post: { title, body } = {} }) {
 
 export async function getServerSideProps({ params }) {
   const { id } = params;
-  const postResponse = await fetch(
+  const post = await fetcher(
     `https://jsonplaceholder.typicode.com/posts/${id}`,
   );
-  const post = await postResponse.json();
 
   return {
     props: {
