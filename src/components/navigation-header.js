@@ -44,8 +44,8 @@ function NavigationHeader() {
           </li>
         ))}
         <li>
-          <Link href="/login">
-            <a>Login</a>
+          <Link href="/dashboard">
+            <a>Dashboard</a>
           </Link>
         </li>
       </ul>

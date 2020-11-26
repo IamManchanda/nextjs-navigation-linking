@@ -1,9 +1,27 @@
 import { Fragment } from "react";
+import useSWR from "swr";
+import NavigationHeader from "../components/navigation-header";
 import fetcher from "../utils/fetcher";
 
-function PageDashboard({ user: { name, bio, blog, twitter_username } = {} }) {
+const userDataApiUrl = "https://api.github.com/users/IamManchanda";
+
+function PageDashboard({ initialUserData }) {
+  const { data: userData, error: userDataError } = useSWR(
+    userDataApiUrl,
+    fetcher,
+    {
+      initialData: initialUserData,
+    },
+  );
+
+  if (userDataError) return <div>Failed to load.</div>;
+  if (!userData) return <div>Loading...</div>;
+
+  const { name, bio, blog, twitter_username } = userData;
+
   return (
     <Fragment>
+      <NavigationHeader />
       <h1>{name}</h1>
       <p>Bio: {bio}</p>
       <p>
@@ -23,11 +41,11 @@ function PageDashboard({ user: { name, bio, blog, twitter_username } = {} }) {
 }
 
 export async function getStaticProps() {
-  const user = await fetcher("https://api.github.com/users/IamManchanda");
+  const initialUserData = await fetcher(userDataApiUrl);
 
   return {
     props: {
-      user,
+      initialUserData,
     },
   };
 }
