@@ -5,7 +5,7 @@ export default (req, res) => {
 
   res.status(200).json({
     id,
-    name: "Harry",
+    name: "Harry Manchanda",
     email: "harry@kibanu.com",
   });
 };
